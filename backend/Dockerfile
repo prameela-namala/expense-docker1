@@ -1,4 +1,4 @@
-FROM node:20 as buider
+FROM node:20 AS  buider
 
 
 WORKDIR /opt/server
