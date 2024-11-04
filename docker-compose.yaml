@@ -5,18 +5,18 @@ volumes:
  mysql:
 services:
  mysql:
-   image: joindevops/mysql:v1
+   image: prameela0/mysql:v1
    container_name: mysql
    volumes:
    - mysql:/var/lib/mysql
  backend:
-   image: joindevops/backend:v1
+   image: prameela0/backend:v1
    container_name: backend
    command: sh -c "sleep 10 && node /opt/service/index.js"
    depends_on:
     - mysql
  frontend:
-   image: joindevops/frontend:v1
+   image: prameela0/frontend:v1
    container_name: frontend
    ports:
     - 80:80
