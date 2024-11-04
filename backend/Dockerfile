@@ -30,16 +30,33 @@
 # RUN npm install
 # #USER expense
 # CMD ["node", "index.js"]
-FROM node:20
-EXPOSE 8080
-ENV DB_HOST="mysql"
+# FROM node:20
+# EXPOSE 8080
+# ENV DB_HOST="mysql"
 
-RUN mkdir /opt/server
+# RUN mkdir /opt/server
+# WORKDIR /opt/server
+
+# COPY package.json .
+# COPY *.js .
+
+# RUN npm install
+
+# CMD ["node", "index.js"]
+FROM node:20 AS builder
 WORKDIR /opt/server
-
 COPY package.json .
 COPY *.js .
-
 RUN npm install
-
-CMD ["node", "index.js"]
+FROM node:20.6-alpine3.17
+EXPOSE 8080
+# RUN mkdir /app
+ENV DB_HOST="mysql"
+RUN addgroup -S expense && adduser -S expense -G expense && \
+    mkdir /opt/server && \
+    chown -R expense:expense /opt/server
+WORKDIR /opt/server
+COPY --from=builder /opt/server /opt/server
+COPY *.js .
+RUN npm install
+CMD [ "node", "index.js" ]
