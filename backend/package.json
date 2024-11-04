@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +17,11 @@
     "express": "^4.17.1",
     "mysql2": "latest",
     "node-fetch": "^2.6.1",
-    "moment" : "latest"
+    "moment" : "latest",
+    "dotenv": "^10.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
