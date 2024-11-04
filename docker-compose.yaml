@@ -5,7 +5,7 @@ volumes:
  mysql:
 services:
  mysql:
-   image: prameela0/mysql:v1
+   image: joindevops/mysql:v1
    container_name: mysql
    volumes:
    - mysql:/var/lib/mysql
@@ -16,7 +16,7 @@ services:
    depends_on:
    - mysql
  frontend:
-   image: prameela0/frontend:v1
+   image: joindevops/frontend:v1
    container_name: frontend
    ports:
    - 80:80
